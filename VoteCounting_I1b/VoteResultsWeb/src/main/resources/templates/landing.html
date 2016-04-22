@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+
+</head>
+<body>
+	<div th:replace="fragments/header :: cabecera">
+		<p></p>
+	</div>
+	<ul class="list-group center-block text-center">
+		<li class="list-group-item" th:each="i : ${response}">
+			&gt;&gt;&nbsp;<a th:href="|/voting?id=${i.id}|" th:text="${i.description}"></a>&nbsp;&lt;&lt;
+		</li>
+	</ul>
+</body>
+</html>
