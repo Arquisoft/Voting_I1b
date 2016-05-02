@@ -1,16 +1,15 @@
 package es.uniovi.asw;
 
-import java.io.IOException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.votingAccess.console.ArgumentsParser;
 
+@SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) throws ParseException, IOException {
-		ArgumentsParser parser = new ArgumentsParser();
-		parser.processArguments(args);
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Application.class, args);
 	}
 
 }

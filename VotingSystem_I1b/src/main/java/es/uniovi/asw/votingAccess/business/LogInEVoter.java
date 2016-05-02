@@ -25,6 +25,8 @@ public class LogInEVoter {
 		if (!voter.getPassword().equals(password)) {
 			throw new BusinessException(BusinessExceptionMessages.WRONG_PASSWORD);
 		}
+		if (voter.getHasVoted())
+			throw new BusinessException(BusinessExceptionMessages.HAS_ALREADY_VOTED);
 		return voter;
 	}
 	
