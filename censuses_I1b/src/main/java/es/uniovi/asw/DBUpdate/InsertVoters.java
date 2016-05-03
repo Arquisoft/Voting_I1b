@@ -1,7 +1,7 @@
-package es.uniovi.asw.jdbc;
+package es.uniovi.asw.DBUpdate;
 
-import es.uniovi.asw.jdbc.Jdbc;
-import es.uniovi.asw.util.Voter;
+import es.uniovi.asw.DBUpdate.Jdbc;
+import es.uniovi.asw.DBUpdate.model.Voter;
 
 import java.io.*;
 import java.sql.Connection;
@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by uo237633 on 21/02/2016.
  */
-public final class InsertDB {
+public final class InsertVoters {
 
-    private InsertDB(){
+    private InsertVoters(){
     }
 
     public static void insert(List<Voter> voters) throws FileNotFoundException, UnsupportedEncodingException {

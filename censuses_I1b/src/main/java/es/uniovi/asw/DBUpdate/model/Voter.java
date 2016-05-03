@@ -1,4 +1,4 @@
-package es.uniovi.asw.util;
+package es.uniovi.asw.DBUpdate.model;
 
 /**
  * Created by Chamadoira on 17/02/2016.
