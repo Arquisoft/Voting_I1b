@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import es.uniovi.asw.DBUpdate.modelo.Vote;
 import es.uniovi.asw.DBUpdate.modelo.Voter;
+import es.uniovi.asw.votingAccess.business.CheckVotingPhase;
 import es.uniovi.asw.votingAccess.business.GetVotingOptions;
 import es.uniovi.asw.votingAccess.business.LogInEVoter;
+import es.uniovi.asw.votingAccess.business.RegisterEVoter;
 import es.uniovi.asw.votingAccess.business.VoteEVoter;
 import es.uniovi.asw.votingAccess.exception.BusinessException;
 import es.uniovi.asw.votingAccess.exception.BusinessExceptionMessages;
@@ -25,9 +27,32 @@ public class Controller {
 	Voter loggedVoter;
 	
 	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(Model model, @RequestParam("inputNIF") String nif) throws SQLException {
+		try {
+			new RegisterEVoter().registerEVoter(nif);
+		} catch (BusinessException b) {
+			String errorAttribute = "";
+			if (b.getMessage().equals(BusinessExceptionMessages.NOT_IN_CENSUS))
+				errorAttribute = "notInCensus";
+			else if (b.getMessage().equals(BusinessExceptionMessages.ALREADY_EVOTER))
+				errorAttribute = "alreadyEVoter";
+			model.addAttribute(errorAttribute, true);
+			return new ModelAndView("register");
+		}
+		model.addAttribute("nifRegistered", true);
+		return new ModelAndView("register");
+	}
+	
+	
 	@RequestMapping(value = "/")
 	public ModelAndView landing(Model model) {
-		return new ModelAndView("login");
+		if (new CheckVotingPhase().checkVotingPhase() == CheckVotingPhase.VOTING)
+			return new ModelAndView("login");
+		else if (new CheckVotingPhase().checkVotingPhase() == CheckVotingPhase.PRE_VOTING)
+			return new ModelAndView("register");
+		else
+			return new ModelAndView("test");
 	}
 	
 	

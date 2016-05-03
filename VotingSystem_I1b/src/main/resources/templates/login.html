@@ -50,13 +50,13 @@ body {
 <div class="container">
 
       <form class="form-signin" action="/login">
-        <h2 class="form-signin-heading">Please introduce your NIF and password</h2>
+        <h2 class="form-signin-heading">Please introduce your NIF and password to register yourself as e-voter</h2>
         <label for="inputEmail" class="sr-only">NIF</label>
         <input type="text" name="inputNIF" id="inputNIF" class="form-control" placeholder="NIF" required="required" autofocus="autofocus"/>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required"/>
        
-        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sing in"/>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Vote"/>
         <p th:if="${notInCensus}" class="form-singin-error" style="color:red"> The given NIF does not correspond to any voter registered in the census</p>
         <p th:if="${wrongPassword}" class="form-singin-error" style="color:red"> Wrong password </p>
         <p th:if="${notEVoter}" class="form-singin-error" style="color:red"> The user is not registered as e-voter </p>
