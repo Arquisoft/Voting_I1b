@@ -1,14 +1,16 @@
 package es.uniovi.asw.ReportWriter;
 
+import es.uniovi.asw.ReportWriter.writer.FileWriter;
+
 /**
  * Created by Chamadoria on 24/02/2016.
  * @author UO236953
  */
-public class ReportWriter implements IWriteReport {
+public class WriteReport implements IWriteReport {
 	
     private FileWriter writer;
     
-    public ReportWriter(FileWriter writer){
+    public WriteReport(FileWriter writer){
     	this.writer = writer;
     }
 

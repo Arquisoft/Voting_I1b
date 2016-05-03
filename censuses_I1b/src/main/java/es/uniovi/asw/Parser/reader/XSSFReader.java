@@ -1,8 +1,7 @@
-package es.uniovi.asw.Parser;
+package es.uniovi.asw.Parser.reader;
 
 import es.uniovi.asw.DBUpdate.Insert;
 import es.uniovi.asw.DBUpdate.model.Voter;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -43,8 +42,7 @@ public class XSSFReader implements Reader{
                         row.getCell(0).getStringCellValue(),
                         row.getCell(1).getStringCellValue(),
                         row.getCell(2).getStringCellValue(),
-                        (int)row.getCell(3).getNumericCellValue(),
-                        RandomPassGenerator.getRandomPass()));
+                        (int)row.getCell(3).getNumericCellValue()));
             } catch (java.lang.IllegalStateException e) {
                 System.err.println("The voter [row = "+rowCounter+"] doesn't follow the required structure");
             }

@@ -3,7 +3,7 @@ package es.uniovi.asw;
 import es.uniovi.asw.DBUpdate.model.Voter;
 import es.uniovi.asw.Parser.IReadCensus;
 import es.uniovi.asw.Parser.ReadCensus;
-import es.uniovi.asw.Parser.XSSFReader;
+import es.uniovi.asw.Parser.reader.XSSFReader;
 
 import java.util.List;
 

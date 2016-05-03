@@ -2,8 +2,6 @@ package es.uniovi.asw.DBUpdate;
 
 import es.uniovi.asw.DBUpdate.Jdbc;
 import es.uniovi.asw.DBUpdate.model.Voter;
-
-import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +12,11 @@ import java.util.List;
  * Created by uo237633 on 21/02/2016.
  */
 public final class InsertVoters {
-
+	
     private InsertVoters(){
     }
 
-    public static void insert(List<Voter> voters) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void insert(List<Voter> voters) {
 //        String s = "Insert into voters values(?,?,?,?,?)";
     	String s = "INSERT INTO VOTANTES "
     			+ "(nif, nombre, email, codColegioElectoral, password, haVotado, votoElectronico) "
@@ -37,7 +35,7 @@ public final class InsertVoters {
         try {
             c = Jdbc.getConnection();
             ps = c.prepareStatement(s);
-            String filename  = "";
+            
             for (Voter v : voters) {
                 row++;
                 ps2 = c.prepareStatement(q);
@@ -54,14 +52,6 @@ public final class InsertVoters {
                     ps.setString(5, v.getPass());
 
                     ps.executeUpdate();
-
-                    filename = v.getDni();
-
-                    PrintWriter writer = new PrintWriter(filename + ".txt", "UTF-8");
-                    writer.println("Dear " + v.getName() + ", here's your voting information");
-                    writer.println("Voting Station: " + v.getStationCode());
-                    writer.println("Password: " + v.getPass());
-                    writer.close();
                 } else {
                     System.out.println("The voter " + v.getDni() + " has already been added");
 

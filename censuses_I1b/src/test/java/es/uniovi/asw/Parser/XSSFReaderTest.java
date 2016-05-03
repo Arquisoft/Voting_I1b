@@ -3,8 +3,8 @@ package es.uniovi.asw.Parser;
 import static org.junit.Assert.assertEquals;
 
 import es.uniovi.asw.DBUpdate.model.Voter;
-import es.uniovi.asw.Parser.Reader;
-import es.uniovi.asw.Parser.XSSFReader;
+import es.uniovi.asw.Parser.reader.Reader;
+import es.uniovi.asw.Parser.reader.XSSFReader;
 
 import org.junit.Test;
 
@@ -26,11 +26,11 @@ public class XSSFReaderTest {
 
             Voter a = voters.get(0);
             assertEquals(a.toString(),"Name: Alberto, DNI: 1111H, e-mail: alberto@gmail.com, Poll Station Code: 1");
-            System.out.println("Alberto's pass: "+a.getPass());
+//            System.out.println("Alberto's pass: "+a.getPass());
 
             Voter b =voters.get(1);
             assertEquals(b.toString(),"Name: Fernando, DNI: 22222J, e-mail: fernando@outlook.com, Poll Station Code: 2");
-            System.out.println("Fernando's pass: "+b.getPass());
+//            System.out.println("Fernando's pass: "+b.getPass());
         }catch(IOException e){
             System.out.println("The file '"+file+"' was not found");
         }

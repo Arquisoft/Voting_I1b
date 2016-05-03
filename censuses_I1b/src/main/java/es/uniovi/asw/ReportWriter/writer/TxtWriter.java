@@ -1,4 +1,4 @@
-package es.uniovi.asw.ReportWriter;
+package es.uniovi.asw.ReportWriter.writer;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

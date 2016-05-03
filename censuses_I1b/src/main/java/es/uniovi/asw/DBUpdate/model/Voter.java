@@ -16,7 +16,14 @@ public class Voter {
         this.pass = pass;
     }
 
-    public String getName() {
+    public Voter(String name, String dni, String email, int stationCode) {
+    	this.name = name;
+        this.dni = dni;
+        this.email = email;
+        this.stationCode = stationCode;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -40,4 +47,8 @@ public class Voter {
     public String toString(){
         return "Name: "+getName()+", DNI: "+getDni()+", e-mail: "+getEmail()+", Poll Station Code: "+getStationCode();
     }
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 }

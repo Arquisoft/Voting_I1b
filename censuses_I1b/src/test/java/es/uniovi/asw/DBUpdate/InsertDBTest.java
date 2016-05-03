@@ -3,8 +3,8 @@ package es.uniovi.asw.DBUpdate;
 import es.uniovi.asw.DBUpdate.InsertVoters;
 import es.uniovi.asw.DBUpdate.Jdbc;
 import es.uniovi.asw.DBUpdate.model.Voter;
-import es.uniovi.asw.Parser.Reader;
-import es.uniovi.asw.Parser.XSSFReader;
+import es.uniovi.asw.Parser.reader.Reader;
+import es.uniovi.asw.Parser.reader.XSSFReader;
 
 import org.junit.Test;
 import java.io.IOException;
