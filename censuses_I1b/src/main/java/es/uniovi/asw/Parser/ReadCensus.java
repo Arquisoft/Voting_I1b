@@ -11,43 +11,56 @@ import es.uniovi.asw.DBUpdate.model.Voter;
 import es.uniovi.asw.Parser.letter.LetterWriter;
 import es.uniovi.asw.Parser.letter.TxtLetterWriter;
 import es.uniovi.asw.Parser.reader.Reader;
+import es.uniovi.asw.Parser.reader.XSSFReader;
 
 public class ReadCensus implements IReadCensus {
 
 	private Reader reader;
 	private final static String PATH = "letters/";
 	private List<Voter> voters;
-	private IInsert db = new Insert();
+	private LetterWriter writer;
+	private IInsert db;
 
-	public ReadCensus(Reader reader) {
-		this.reader = reader;
+	public ReadCensus() {
+		RCensus();
 	}
 
+	public void RCensus(){
+		this.reader = new XSSFReader();
+		this.db = new Insert();
+		this.writer = new TxtLetterWriter();
+	}
+	
+	
 	@Override
 	public List<Voter> read(String file) {
 		voters = null;
 		try {
-			voters = reader.read(file);
-			generatePassword();
-			db.insert(voters);
-			writeLetter();
+			voters = reader.processFile(file);
+			generatePasswords();
+			writeLetters();
+			try{
+				InserR(voters);
+				db.insert(voters);
+			} catch(IllegalStateException e){
+				System.out.println(e.getMessage());
+			}
 		} catch (IOException e) {
 			System.out.println("The file '" + file + "' was not found");
 		}
 		return voters;
 	}
 
-	private void generatePassword() {
+	private void generatePasswords() {
 		for (Voter voter : voters) {
 			voter.setPass(RandomPassGenerator.getRandomPass());
 		}
 	}
 
-	private void writeLetter() {
+	private void writeLetters() {
 		for (Voter voter : voters) {
 			String filename = PATH + voter.getDni();
 
-			LetterWriter writer = new TxtLetterWriter();
 			try {
 				writer.write(voter, filename);
 			} catch (FileNotFoundException e) {
@@ -58,6 +71,14 @@ public class ReadCensus implements IReadCensus {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public List<Voter> InserR(List<Voter> voters) {
+		if(voters == null || voters.isEmpty()){
+			throw new IllegalStateException("There are no voters to insert");
+		}
+		return voters;
 	}
 
 }

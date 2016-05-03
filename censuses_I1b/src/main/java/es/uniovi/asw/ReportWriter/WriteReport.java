@@ -20,7 +20,7 @@ public class WriteReport implements IWriteReport {
 	}
 
 	@Override
-	public void append(String message) {
+	public void WReportP(String message) {
 		writer.add(message);
 	}
 

@@ -66,4 +66,28 @@ public final class InsertVoters {
                 Jdbc.close(ps);
         }
     }
+
+	public static void checkMissingFields(List<Voter> voters) {
+		for(Voter voter : voters){
+			if(voter.getDni() == null || voter.getDni().isEmpty()){
+				throw new IllegalStateException("The NIF is missing");
+			}
+			if(voter.getName() == null || voter.getName().isEmpty()){
+				throw new IllegalStateException(
+						"The name of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getEmail() == null || voter.getEmail().isEmpty()){
+				throw new IllegalStateException(
+						"The email of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getPass() == null || voter.getPass().isEmpty()){
+				throw new IllegalStateException(
+						"The password of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getStationCode() == null){
+				throw new IllegalStateException(
+						"The polling station code of the voter of NIF " + voter.getDni() + " is missing");
+			}
+		}
+	}
 }

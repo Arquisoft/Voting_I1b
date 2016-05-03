@@ -3,8 +3,6 @@ package es.uniovi.asw;
 import es.uniovi.asw.DBUpdate.model.Voter;
 import es.uniovi.asw.Parser.IReadCensus;
 import es.uniovi.asw.Parser.ReadCensus;
-import es.uniovi.asw.Parser.reader.XSSFReader;
-
 import java.util.List;
 
 /**
@@ -17,7 +15,7 @@ import java.util.List;
 public class LoadUsers {
 
 	public static void main(String... args) {
-		IReadCensus reader = new ReadCensus(new XSSFReader());
+		IReadCensus reader = new ReadCensus();
 		List<Voter> voters = reader.read(args[0]);
 		if (voters != null) {
 			for (Voter v : voters) {

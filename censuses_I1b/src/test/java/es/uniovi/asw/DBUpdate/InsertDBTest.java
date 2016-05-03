@@ -25,7 +25,7 @@ public class InsertDBTest {
     public void read() {
         Reader reader = new XSSFReader();
         try {
-            List<Voter> voters= reader.read(file);
+            List<Voter> voters= reader.processFile(file);
 
             InsertVoters.insert(voters);
 

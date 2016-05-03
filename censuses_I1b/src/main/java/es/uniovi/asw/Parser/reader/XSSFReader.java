@@ -1,6 +1,5 @@
 package es.uniovi.asw.Parser.reader;
 
-import es.uniovi.asw.DBUpdate.Insert;
 import es.uniovi.asw.DBUpdate.model.Voter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
@@ -17,16 +16,6 @@ import java.util.List;
  * @author UO236953
  */
 public class XSSFReader implements Reader{
-
-    public List<Voter> read(String file) throws IOException {
-        List<Voter> voters = processFile(file);
-        insertIntoDB(voters);
-        return voters;
-    }
-    
-    private void insertIntoDB(List<Voter> voters){
-    	new Insert().insert(voters);
-    }
 
 	@Override
 	public List<Voter> processFile(String file) throws IOException{

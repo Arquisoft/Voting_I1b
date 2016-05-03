@@ -6,7 +6,7 @@ package es.uniovi.asw.DBUpdate.model;
  */
 public class Voter {
     private String name, dni, email, pass;
-    private int stationCode;
+    private Integer stationCode;
 
     public Voter(String name, String dni, String email, int stationCode, String pass) {
         this.name = name;
@@ -35,7 +35,7 @@ public class Voter {
         return email;
     }
 
-    public int getStationCode() {
+    public Integer getStationCode() {
         return stationCode;
     }
 
