@@ -6,7 +6,7 @@
 	<version>0.0.1</version>
 	<name>censuses_i1b</name>
 	<packaging>jar</packaging>
-	<description>Sensuses SubSystem</description>
+	<description>Censuses SubSystem</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
