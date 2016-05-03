@@ -31,7 +31,7 @@ public class XSSFReader extends Reader{
                         row.getCell(0).getStringCellValue(),
                         row.getCell(1).getStringCellValue(),
                         row.getCell(2).getStringCellValue(),
-                        row.getCell(3).getStringCellValue(),
+                        (int)row.getCell(3).getNumericCellValue(),
                         RandomPassGenerator.getRandomPass()));
             }catch(java.lang.IllegalStateException e){
                 System.err.println("The voter [row = "+rowCounter+"] doesn't follow the required structure");
