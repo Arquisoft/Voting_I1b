@@ -9,10 +9,15 @@ import java.sql.*;
  * @author UO236953
  */
 public class Jdbc {
-    private static String DRIVER = "org.sqlite.JDBC";
-    private static String URL = "jdbc:sqlite:voters.db";
-    private static String USER = "sa";
-    private static String PASS = "";
+//    private static String DRIVER = "org.sqlite.JDBC";
+//    private static String URL = "jdbc:sqlite:voters.db";
+//    private static String USER = "sa";
+//    private static String PASS = "";
+	
+	private static String DRIVER = "com.mysql.jdbc.Driver";
+  private static String URL = "jdbc:mysql://digital-skill.com:3306/andrei_voters?autoReconnect=true";
+  private static String USER = "andrei_vot";
+  private static String PASS = "votersgonnavote";
 
     static {
         try {

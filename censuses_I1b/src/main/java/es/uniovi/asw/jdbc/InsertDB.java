@@ -19,8 +19,13 @@ public final class InsertDB {
     }
 
     public static void insert(List<Voter> voters) throws FileNotFoundException, UnsupportedEncodingException {
-        String s = "Insert into voters values(?,?,?,?,?)";
-        String q = "Select * from voters where NIF = ?";
+//        String s = "Insert into voters values(?,?,?,?,?)";
+    	String s = "INSERT INTO VOTANTES "
+    			+ "(nif, nombre, email, codColegioElectoral, password, haVotado, votoElectronico) "
+    			+ "VALUES (?, ?, ?, ?, ?, 0, 0)";
+//        String q = "Select * from voters where NIF = ?";
+    	String q = "SELECT v.nif, v.nombre, v.email, v.codColegioElectoral, v.password "
+    			+ "FROM VOTANTES v WHERE v.nif=?";
 
         Connection c = null;
         PreparedStatement ps = null;
@@ -45,7 +50,7 @@ public final class InsertDB {
                     ps.setString(1, v.getDni());
                     ps.setString(2, v.getName());
                     ps.setString(3, v.getEmail());
-                    ps.setString(4, v.getStationCode());
+                    ps.setInt(4, v.getStationCode());
                     ps.setString(5, v.getPass());
 
                     ps.executeUpdate();
