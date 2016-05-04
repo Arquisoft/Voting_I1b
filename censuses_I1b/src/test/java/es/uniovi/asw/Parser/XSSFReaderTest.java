@@ -2,9 +2,9 @@ package es.uniovi.asw.Parser;
 
 import static org.junit.Assert.assertEquals;
 
-import es.uniovi.asw.DBUpdate.model.Voter;
-import es.uniovi.asw.Parser.reader.Reader;
-import es.uniovi.asw.Parser.reader.XSSFReader;
+import es.uniovi.asw.Parser.parser.Parser;
+import es.uniovi.asw.Parser.parser.XSSFParser;
+import es.uniovi.asw.UpdateDB.model.Voter;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class XSSFReaderTest {
 
     @Test
     public void read() {
-    	Reader reader = new XSSFReader();
+    	Parser reader = new XSSFParser();
         try {
             List<Voter> voters= reader.processFile(file);
 

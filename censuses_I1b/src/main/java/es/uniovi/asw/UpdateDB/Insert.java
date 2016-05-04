@@ -1,8 +1,8 @@
-package es.uniovi.asw.DBUpdate;
+package es.uniovi.asw.UpdateDB;
 
 import java.util.List;
 
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.model.Voter;
 
 public class Insert implements IInsert {
 

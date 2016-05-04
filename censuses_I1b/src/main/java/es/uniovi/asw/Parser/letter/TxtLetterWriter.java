@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.model.Voter;
 
 public class TxtLetterWriter implements LetterWriter {
 	

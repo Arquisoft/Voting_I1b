@@ -1,7 +1,7 @@
-package es.uniovi.asw.DBUpdate;
+package es.uniovi.asw.UpdateDB;
 
-import es.uniovi.asw.DBUpdate.Jdbc;
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.Jdbc;
+import es.uniovi.asw.UpdateDB.model.Voter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package es.uniovi.asw.DBUpdate;
+package es.uniovi.asw.UpdateDB;
 
 import java.sql.*;
 

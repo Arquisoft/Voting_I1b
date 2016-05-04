@@ -5,17 +5,17 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import es.uniovi.asw.DBUpdate.IInsert;
-import es.uniovi.asw.DBUpdate.Insert;
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.IInsert;
+import es.uniovi.asw.UpdateDB.Insert;
+import es.uniovi.asw.UpdateDB.model.Voter;
 import es.uniovi.asw.Parser.letter.LetterWriter;
 import es.uniovi.asw.Parser.letter.TxtLetterWriter;
-import es.uniovi.asw.Parser.reader.Reader;
-import es.uniovi.asw.Parser.reader.XSSFReader;
+import es.uniovi.asw.Parser.parser.Parser;
+import es.uniovi.asw.Parser.parser.XSSFParser;
 
 public class ReadCensus implements IReadCensus {
 
-	private Reader reader;
+	private Parser reader;
 	private final static String PATH = "letters/";
 	private List<Voter> voters;
 	private LetterWriter writer;
@@ -26,7 +26,7 @@ public class ReadCensus implements IReadCensus {
 	}
 
 	public void RCensus(){
-		this.reader = new XSSFReader();
+		this.reader = new XSSFParser();
 		this.db = new Insert();
 		this.writer = new TxtLetterWriter();
 	}
