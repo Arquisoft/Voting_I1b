@@ -1,17 +1,21 @@
 package es.uniovi.asw.DBUpdate;
 
-import es.uniovi.asw.DBUpdate.InsertVoters;
-import es.uniovi.asw.DBUpdate.Jdbc;
-import es.uniovi.asw.DBUpdate.model.Voter;
-import es.uniovi.asw.Parser.reader.Reader;
-import es.uniovi.asw.Parser.reader.XSSFReader;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import es.uniovi.asw.Parser.parser.Parser;
+import es.uniovi.asw.Parser.parser.XSSFParser;
+import es.uniovi.asw.UpdateDB.InsertVoters;
+import es.uniovi.asw.UpdateDB.Jdbc;
+import es.uniovi.asw.UpdateDB.model.Voter;
 
 /**
  * Created by uo237633 on 24/02/2016.
@@ -23,7 +27,7 @@ public class InsertDBTest {
     
     @Test
     public void read() {
-        Reader reader = new XSSFReader();
+        Parser reader = new XSSFParser();
         try {
             List<Voter> voters= reader.processFile(file);
 

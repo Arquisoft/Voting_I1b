@@ -1,6 +1,6 @@
 package es.uniovi.asw;
 
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.model.Voter;
 import es.uniovi.asw.Parser.IReadCensus;
 import es.uniovi.asw.Parser.ReadCensus;
 import java.util.List;

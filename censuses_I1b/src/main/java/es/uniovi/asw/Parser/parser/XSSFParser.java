@@ -1,6 +1,6 @@
-package es.uniovi.asw.Parser.reader;
+package es.uniovi.asw.Parser.parser;
 
-import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.UpdateDB.model.Voter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Chamadoira on 17/02/2016.
  * @author UO236953
  */
-public class XSSFReader implements Reader{
+public class XSSFParser implements Parser{
 
 	@Override
 	public List<Voter> processFile(String file) throws IOException{

@@ -6,11 +6,11 @@ import es.uniovi.asw.ReportWriter.writer.FileWriter;
  * Created by Chamadoria on 24/02/2016.
  * @author UO236953
  */
-public class WriteReport implements IWriteReport {
+public class ReportWriter implements IReportWriter {
 	
     private FileWriter writer;
     
-    public WriteReport(FileWriter writer){
+    public ReportWriter(FileWriter writer){
     	this.writer = writer;
     }
 
