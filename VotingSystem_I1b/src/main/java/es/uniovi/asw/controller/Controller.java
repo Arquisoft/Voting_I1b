@@ -60,7 +60,7 @@ public class Controller {
 	public ModelAndView vote(Model model, @RequestParam("inputVote") String vote, HttpServletRequest request)
 			throws SQLException {
 		
-		Vote submitVote = new Vote(vote);
+		Vote submitVote = new Vote(vote.toLowerCase());
 		new VoteEVoter().voteEVoter(submitVote, loggedVoter);
 			
 		return new ModelAndView("voted");

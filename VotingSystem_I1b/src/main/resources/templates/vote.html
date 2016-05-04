@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head">
@@ -42,7 +43,7 @@ body {
 		<form class="form-vote" action="/vote">
 			<h2 class="form-vote-heading">Please select your vote</h2>
 			<p class="options" th:each="option : ${votingOptions}">
-				<input type="radio" name="inputVote" th:text="${option}" th:value="${option}" /> <br/>
+				<input type="radio" th:id="${option}" name="inputVote" th:text="${option}" th:value="${option}" /> <br/>
 			</p>  
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Vote"/>
 		</form>
