@@ -4,15 +4,17 @@ import javax.persistence.*;
 
 
 @Entity 
-@Table(name="Vote")
+@Table(name="VOTOS")
 public class Vote {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="VOTO")
 	private Long id;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Voting voting;
+	@Column(name="OPCION")
 	private String option;
 	
 	public Vote(){}

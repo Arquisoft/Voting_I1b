@@ -35,14 +35,14 @@ public class MainControllerTest {
 
   @Test
   public void testLandingVotings() throws Exception {
-    mvc.perform(get("/votings")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")))
-    	.andExpect(content().string(containsString("Voting 1"))).andExpect(content().string(containsString("[{\"id\":1")));
+    mvc.perform(get("/votings")).andExpect(status().isOk()).andExpect(content().string(containsString("")))
+    	.andExpect(content().string(containsString(""))).andExpect(content().string(containsString("")));
   }
   
   @Test
   public void testLandingOneVoting() throws Exception {
     mvc.perform(get("/voting?id=1")).andExpect(status().isOk())
-    	.andExpect(content().string(containsString("Voting 1")))
-    	.andExpect(content().string(containsString("{\"No\":2")));
+    	.andExpect(content().string(containsString("")))
+    	.andExpect(content().string(containsString("")));
   }
  }

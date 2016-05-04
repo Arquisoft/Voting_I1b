@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity 
-@Table(name="Voters")
+@Table(name="VOTANTES")
 @XmlRootElement(name = "voter")
 public class Voter {
 
@@ -20,15 +20,18 @@ public class Voter {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;    
 	
+	@Column(name="NOMBRE")
     private String name;
-    
+	
+	@Column(name="PASSWORD")
     private String password;
     
-    @Column(unique=true)
+    @Column(unique=true, name="EMAIL")
     private String email;
-    @Column(unique=true)
+    @Column(unique=true, name="NIF")
     private String nif;
     
+    @Column(name="CODCOLEGIOELECTORAL")
     private String pollingStationCode;
 
 
