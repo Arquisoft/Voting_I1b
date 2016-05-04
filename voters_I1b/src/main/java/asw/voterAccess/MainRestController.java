@@ -116,7 +116,7 @@ public class MainRestController {
     public String probardb() {
         
     	try{
-    		Voter v = new Voter("Daniel Cuesta Suarez","1234","dani@example.com","123456","71776420K");
+    		Voter v = new Voter(1,"Daniel Cuesta Suarez","1234","dani@example.com","123456","71776420K");
     		System.out.println(voterRep.save(v));
     	}catch(Exception e){e.printStackTrace();}    	
     	

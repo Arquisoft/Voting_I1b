@@ -15,9 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="VOTANTES")
 @XmlRootElement(name = "voter")
 public class Voter {
-
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;    
 	
 	@Column(name="NOMBRE")
@@ -27,6 +24,7 @@ public class Voter {
     private String password;
     
     @Column(unique=true, name="EMAIL")
+    @Id
     private String email;
     @Column(unique=true, name="NIF")
     private String nif;
@@ -35,8 +33,9 @@ public class Voter {
     private String pollingStationCode;
 
 
-    public Voter(String name, String password, String email, String pollingStationCode, String nif) {
-        this.password = password;
+    public Voter(long id,String name, String password, String email, String pollingStationCode, String nif) {
+        this.id=id;
+    	this.password = password;
         this.name = name;
         this.email = email;
         this.pollingStationCode = pollingStationCode;
@@ -49,8 +48,9 @@ public class Voter {
         this.password = password;
         this.email = email;
         }
-    
-    public long getId() {
+   
+
+	public long getId() {
         return id;
     }
 

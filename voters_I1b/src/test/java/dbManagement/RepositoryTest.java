@@ -25,6 +25,7 @@ public class RepositoryTest {
 	private String pass;
 	private String name;
 	private String nif;
+	private Long id;
 	
 	 @Autowired
 	    private VoterRepository voterRep;
@@ -35,7 +36,8 @@ public class RepositoryTest {
 		email = "pepe@uniovi.es";
 		pass = "pepe123";
 		name = "Pepe";
-		nif = "000";
+		nif = "0000I";
+		id= 500l;
 		try {
 	    	Voter voter1 = voterRep.findByEmail(email);
 	        voterRep.delete(voter1);
@@ -46,7 +48,7 @@ public class RepositoryTest {
 	 
     @Test 
     public void testRepoAdd(){
-    	Voter voter1 = new Voter(name,pass,email,"0",nif); 
+    	Voter voter1 = new Voter(id,name,pass,email,"0",nif); 
     	voter1 = voterRep.save(voter1);
     	try
     	{
@@ -59,7 +61,7 @@ public class RepositoryTest {
     @Test
     public void testRepoDel(){
     
-    	Voter voter1 = new Voter(name,pass,email,"0",nif); 
+    	Voter voter1 = new Voter(id,name,pass,email,"0",nif); 
     	voter1= voterRep.save(voter1);
     	voterRep.delete(voter1);
     	try

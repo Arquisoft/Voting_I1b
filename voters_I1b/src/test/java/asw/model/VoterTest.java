@@ -18,8 +18,8 @@ public class VoterTest {
         String pass2 = "peqawfmd123";
         String name2 = "Manuel";
         String nif2 = "700200";
-        Voter voter1 = new Voter(name,pass,email,nif,"123");
-        Voter voter2 = new Voter(name,pass,email,nif,"123");
+        Voter voter1 = new Voter(1,name,pass,email,nif,"123");
+        Voter voter2 = new Voter(1,name,pass,email,nif,"123");
         assertEquals(voter1,voter2);
         voter2.setName(name2);
         voter2.setNif(nif2);
