@@ -1,10 +1,12 @@
-package es.uniovi.asw.jdbc;
+package es.uniovi.asw.DBUpdate;
 
-import es.uniovi.asw.parser.Reader;
-import es.uniovi.asw.util.Voter;
+import es.uniovi.asw.DBUpdate.InsertVoters;
+import es.uniovi.asw.DBUpdate.Jdbc;
+import es.uniovi.asw.DBUpdate.model.Voter;
+import es.uniovi.asw.Parser.reader.Reader;
+import es.uniovi.asw.Parser.reader.XSSFReader;
+
 import org.junit.Test;
-import org.junit.runner.Result;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.List;
@@ -16,15 +18,16 @@ import static org.junit.Assert.assertEquals;
  * @author uo237633
  */
 public class InsertDBTest {
-    String file=".\\src\\test\\java\\es\\uniovi\\asw\\jdbc\\votersXSSFReaderTest.xlsx";
+    String file=".\\src\\test\\resources\\insertDBTest.xlsx";
     //String file="./src/test/java/es/uniovi/asw/jdbc/votersXSSFReaderTest.xlsx";
+    
     @Test
     public void read() {
-        Reader reader = Reader.getInstanceXlsx();
+        Reader reader = new XSSFReader();
         try {
-            List<Voter> voters= reader.read(file);
+            List<Voter> voters= reader.processFile(file);
 
-            InsertDB.insert(voters);
+            InsertVoters.insert(voters);
 
 //            String s = "Select * from voters where Name = 'Alberto'";
             

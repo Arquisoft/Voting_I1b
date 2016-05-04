@@ -1,9 +1,7 @@
-package es.uniovi.asw.jdbc;
+package es.uniovi.asw.DBUpdate;
 
-import es.uniovi.asw.jdbc.Jdbc;
-import es.uniovi.asw.util.Voter;
-
-import java.io.*;
+import es.uniovi.asw.DBUpdate.Jdbc;
+import es.uniovi.asw.DBUpdate.model.Voter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +11,12 @@ import java.util.List;
 /**
  * Created by uo237633 on 21/02/2016.
  */
-public final class InsertDB {
-
-    private InsertDB(){
+public final class InsertVoters {
+	
+    private InsertVoters(){
     }
 
-    public static void insert(List<Voter> voters) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void insert(List<Voter> voters) {
 //        String s = "Insert into voters values(?,?,?,?,?)";
     	String s = "INSERT INTO VOTANTES "
     			+ "(nif, nombre, email, codColegioElectoral, password, haVotado, votoElectronico) "
@@ -37,7 +35,7 @@ public final class InsertDB {
         try {
             c = Jdbc.getConnection();
             ps = c.prepareStatement(s);
-            String filename  = "";
+            
             for (Voter v : voters) {
                 row++;
                 ps2 = c.prepareStatement(q);
@@ -54,14 +52,6 @@ public final class InsertDB {
                     ps.setString(5, v.getPass());
 
                     ps.executeUpdate();
-
-                    filename = v.getDni();
-
-                    PrintWriter writer = new PrintWriter(filename + ".txt", "UTF-8");
-                    writer.println("Dear " + v.getName() + ", here's your voting information");
-                    writer.println("Voting Station: " + v.getStationCode());
-                    writer.println("Password: " + v.getPass());
-                    writer.close();
                 } else {
                     System.out.println("The voter " + v.getDni() + " has already been added");
 
@@ -76,4 +66,28 @@ public final class InsertDB {
                 Jdbc.close(ps);
         }
     }
+
+	public static void checkMissingFields(List<Voter> voters) {
+		for(Voter voter : voters){
+			if(voter.getDni() == null || voter.getDni().isEmpty()){
+				throw new IllegalStateException("The NIF is missing");
+			}
+			if(voter.getName() == null || voter.getName().isEmpty()){
+				throw new IllegalStateException(
+						"The name of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getEmail() == null || voter.getEmail().isEmpty()){
+				throw new IllegalStateException(
+						"The email of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getPass() == null || voter.getPass().isEmpty()){
+				throw new IllegalStateException(
+						"The password of the voter of NIF " + voter.getDni() + " is missing");
+			}
+			if(voter.getStationCode() == null){
+				throw new IllegalStateException(
+						"The polling station code of the voter of NIF " + voter.getDni() + " is missing");
+			}
+		}
+	}
 }

@@ -1,28 +1,24 @@
-package es.uniovi.asw;
+package es.uniovi.asw.ReportWriter;
 
-import es.uniovi.asw.util.RandomPassGenerator;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import es.uniovi.asw.Parser.RandomPassGenerator;
+import es.uniovi.asw.ReportWriter.writer.TxtWriter;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import static org.junit.Assert.assertEquals;
 /**
  * Created by Chamadoira on 24/02/2016.
  * @author UO236953
  */
-public class ReportWriterTest {
-    String file=".\\src\\test\\java\\es\\uniovi\\asw\\ReportWriterTest.txt";
-
+public class TxtWriterTest {
+    String inputFile=".\\src\\test\\resources\\TxtWriterTest.txt";
+    String outputFile = "reports/report";
+    
     @Test
     public void textGeneratorTest(){
-        ReportWriter rw = new ReportWriter();
+    	TxtWriter rw = new TxtWriter();
         rw.add("Message 1");
         rw.add("Message 2");
         rw.add("Message 3");
@@ -32,16 +28,15 @@ public class ReportWriterTest {
     }
     @Test
     public void txtWriter(){
-        ReportWriter rw = new ReportWriter();
+    	TxtWriter rw = new TxtWriter();
         rw.add("Message 1");
         rw.add("Message 2");
         rw.add("Message 3");
 
-        String randomNameFile =RandomPassGenerator.getRandomPass();
-        rw.makeTxt(randomNameFile);
+        rw.toFile(outputFile);
         try {
-            BufferedReader fileCreated = new BufferedReader(new FileReader(randomNameFile+".txt"));
-            BufferedReader fileOriginal = new BufferedReader(new FileReader(file));
+            BufferedReader fileCreated = new BufferedReader(new FileReader(outputFile + ".txt"));
+            BufferedReader fileOriginal = new BufferedReader(new FileReader(inputFile));
             assertEquals( fileCreated.readLine(),fileOriginal.readLine());
 
         } catch (java.io.IOException e) {

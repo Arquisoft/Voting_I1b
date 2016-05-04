@@ -1,4 +1,4 @@
-package es.uniovi.asw.util;
+package es.uniovi.asw.DBUpdate.model;
 
 /**
  * Created by Chamadoira on 17/02/2016.
@@ -6,7 +6,7 @@ package es.uniovi.asw.util;
  */
 public class Voter {
     private String name, dni, email, pass;
-    private int stationCode;
+    private Integer stationCode;
 
     public Voter(String name, String dni, String email, int stationCode, String pass) {
         this.name = name;
@@ -16,7 +16,14 @@ public class Voter {
         this.pass = pass;
     }
 
-    public String getName() {
+    public Voter(String name, String dni, String email, int stationCode) {
+    	this.name = name;
+        this.dni = dni;
+        this.email = email;
+        this.stationCode = stationCode;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -28,7 +35,7 @@ public class Voter {
         return email;
     }
 
-    public int getStationCode() {
+    public Integer getStationCode() {
         return stationCode;
     }
 
@@ -40,4 +47,8 @@ public class Voter {
     public String toString(){
         return "Name: "+getName()+", DNI: "+getDni()+", e-mail: "+getEmail()+", Poll Station Code: "+getStationCode();
     }
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 }

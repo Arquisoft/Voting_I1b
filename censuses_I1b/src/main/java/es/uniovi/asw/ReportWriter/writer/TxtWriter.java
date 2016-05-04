@@ -1,17 +1,13 @@
-package es.uniovi.asw;
-
+package es.uniovi.asw.ReportWriter.writer;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-/**
- * Created by Chamadoria on 24/02/2016.
- * @author UO236953
- */
-public class ReportWriter {
-    private StringBuffer sb;
+public class TxtWriter implements FileWriter {
+	
+	private StringBuffer sb;
 
-    public ReportWriter(){
+    public TxtWriter(){
         sb = new StringBuffer();
     }
 
@@ -20,12 +16,14 @@ public class ReportWriter {
     }
 
     public void clean(){
-        sb=new StringBuffer();
+        sb = new StringBuffer();
     }
+    
     public void print(){
         System.out.println(sb);
     }
-    public void makeTxt(String fileName){
+    
+    public void toFile(String fileName){
         try {
             PrintWriter writer = new PrintWriter(fileName + ".txt");
             writer.print(sb);
@@ -34,6 +32,7 @@ public class ReportWriter {
                 e1.printStackTrace();
         }
     }
+    
     @Override
     public String toString(){
         return sb.toString();
